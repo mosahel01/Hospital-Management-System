@@ -1,6 +1,7 @@
 package com.example.hospitalManagement.entity.type;
 
 public enum BloodGroupType {
+
     AB_NEGATIVE,
     AB_POSITIVE,
     A_NEGATIVE,
@@ -9,4 +10,5 @@ public enum BloodGroupType {
     B_POSITIVE,
     O_NEGATIVE,
     O_POSITIVE,
+
 }
