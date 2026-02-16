@@ -7,20 +7,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @ToString
 @Getter
 @Setter
-@Table(
-        name = "patient",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}),
-                @UniqueConstraint(name = "unique_patient_name_birth_date", columnNames = {"name", "birthDate"})
-        },
-        indexes = {
-                @Index(name = "idx_patient_birthdate", columnList = "birthDate")
-        }
+@Table(name = "patient", uniqueConstraints = {@UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}), @UniqueConstraint(name = "unique_patient_name_birth_date", columnNames = {"name", "birthDate"})}, indexes = {@Index(name = "idx_patient_birthdate", columnList = "birthDate")}
 
 )
 @AllArgsConstructor
@@ -49,4 +42,15 @@ public class Patient {
 
     @Enumerated(EnumType.STRING)
     private BloodGroupType blood_group;
+
+    @OneToOne
+    @JoinColumn(name = "insurance_id") // inverse side
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointmentList;
+
+    @OneToMany(mappedBy = "doctor_id")
+    private List<Doctor> doctorList;
+
 }
