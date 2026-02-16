@@ -41,7 +41,7 @@ public class PatientTests {
             System.out.println(bloodGroupResponse);
         }
 
-//      patientFindAll.forEach(System.out::println);
+        // patientFindAll.forEach(System.out::println);
         for (Patient patients : patientFindAll) {
             System.out.println(patients.getName());
         }
