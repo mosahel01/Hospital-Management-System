@@ -28,4 +28,8 @@ public class Appointment {
     @JoinColumn(name = "patient_id", nullable = false) // patient is required so not nullable
     private Patient patient;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Doctor doctor;
+
 }
