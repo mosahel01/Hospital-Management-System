@@ -49,5 +49,6 @@ public class PatientTests {
         int rowsUpdated = patientRepository.updateNameById("Jimmy McNulty", 1L);
         System.out.println(rowsUpdated);
 
+
     }
 }
