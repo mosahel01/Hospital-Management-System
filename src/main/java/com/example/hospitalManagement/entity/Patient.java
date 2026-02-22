@@ -13,12 +13,23 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
-@Table(name = "patient", uniqueConstraints = {@UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}), @UniqueConstraint(name = "unique_patient_name_birth_date", columnNames = {"name", "birthDate"})}, indexes = {@Index(name = "idx_patient_birthdate", columnList = "birthDate")}
+@Table(
+        name = "patient",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "unique_patient_email", columnNames = {
+                        "email"
+                }),
+                @UniqueConstraint(name = "unique_patient_name_birth_date", columnNames = {
+                        "name", "birthDate"
+                })
+        },
+        indexes = {
+                @Index(name = "idx_patient_birthdate", columnList = "birthDate")
+        }
 
 )
 @AllArgsConstructor
 @NoArgsConstructor
-// Entity Mapping and Relationship
 public class Patient {
 
     @Id
@@ -50,7 +61,5 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointmentList;
 
-    @OneToMany(mappedBy = "doctor_id")
-    private List<Doctor> doctorList;
 
 }
