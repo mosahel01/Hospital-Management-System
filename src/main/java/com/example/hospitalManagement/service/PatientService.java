@@ -18,9 +18,9 @@ public class PatientService {
     public Patient getPatient(Long id) {
 
         Patient p1 = patientRepository
-            .findById(id)
-            .orElseThrow(
-                    () -> new RuntimeException("Patient ID not found"));
+                .findById(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Patient ID not found"));
         p1.setName("Bob");
         return p1;
     }
