@@ -1,6 +1,7 @@
 package com.example.hospitalManagement.entity;
 
 import jakarta.persistence.*;
+
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -31,5 +32,4 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Doctor doctor;
-
 }
