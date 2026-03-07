@@ -31,5 +31,5 @@ public class Department {
 
     @Column(unique = true, nullable = false)
     private Long head_doctor_id;
-}
 
+}
