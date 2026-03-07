@@ -17,7 +17,8 @@ import java.util.List;
 @Sql(scripts = "classpath:data.sql") // Path to a SQL Script that inserts data
 public class PatientTests {
 
-    @Autowired PatientRepository patientRepository;
+    @Autowired
+    PatientRepository patientRepository;
 
     @Test
     public void testTransactionalMethods() {
@@ -45,15 +46,15 @@ public class PatientTests {
 
         List<BloodGroupCountResponseEntity> patientBloodGroupList =
                 patientRepository.countEachBloodGroupType();
+
         for (BloodGroupCountResponseEntity bloodGroupResponse : patientBloodGroupList) {
             System.out.println(bloodGroupResponse);
-                System.out.println("Hello world");
         }
 
         // patientFindAll.forEach(System.out::println);
         for (Patient patients : patientFindAll) {
             System.out.println(patients.getName());
-	    System.out.println(patients.getName());
+            System.out.println(patients.getName());
         }
 
         int rowsUpdated = patientRepository.updateNameById("Jimmy McNulty", 1L);
