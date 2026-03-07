@@ -17,28 +17,29 @@ import java.util.List;
 // Spring Data JPA
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-	Patient findByName(String name);
+    Patient findByName(String name);
 
-	List<Patient> findByBirthDateBetween(LocalDate birthDate, LocalDate birthDate2);
+    List<Patient> findByBirthDateBetween(LocalDate birthDate, LocalDate birthDate2);
 
-	List<Patient> findByBirthDateOrEmail(LocalDate birth_date, String email);
+    List<Patient> findByBirthDateOrEmail(LocalDate birth_date, String email);
 
-	List<Patient> findByNameContainingIgnoreCaseOrderByIdDesc(String name);
+    List<Patient> findByNameContainingIgnoreCaseOrderByIdDesc(String name);
 
-	@Query("SELECT p FROM Patient p where p.blood_group = ?1")
-	List<Patient> findByBloodGroup(@Param("blood_group") BloodGroupType blood_group);
+    @Query("SELECT p FROM Patient p where p.blood_group = ?1")
+    List<Patient> findByBloodGroup(@Param("blood_group") BloodGroupType blood_group);
 
-	@Query(
-	"SELECT new"
-	+ " com.example.hospitalManagement.dto.BloodGroupCountResponseEntity(p.blood_group,Count(p))"
-	+ " FROM Patient p group by p.blood_group")
-		List<BloodGroupCountResponseEntity> countEachBloodGroupType();
+    @Query(
+            "SELECT new"
+                    + " com.example.hospitalManagement.dto.BloodGroupCountResponseEntity(p.blood_group,Count(p))"
+                    + " FROM Patient p group by p.blood_group")
+    List<BloodGroupCountResponseEntity> countEachBloodGroupType();
 
-	@Query(value = "SELECT * FROM Patient", nativeQuery = true)
-	List<Patient> findAllPatients();
+    @Query(value = "SELECT * FROM Patient", nativeQuery = true)
+    List<Patient> findAllPatients();
 
-	@Modifying
-	@Transactional
-	@Query("UPDATE Patient p SET p.name = :name where p.id = :id")
-	int updateNameById(@Param("name") String name, @Param("id") Long id);
+    @Modifying
+    @Transactional
+    @Query("UPDATE Patient p SET p.name = :name where p.id = :id")
+    int updateNameById(@Param("name") String name, @Param("id") Long id);
+
 }
