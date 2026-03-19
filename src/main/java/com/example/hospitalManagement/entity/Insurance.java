@@ -33,6 +33,7 @@ public class Insurance {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(mappedBy = "insurance") // owning side
+	// Owning side
+    @OneToOne(mappedBy = "insurance")
     private Patient patient;
 }
