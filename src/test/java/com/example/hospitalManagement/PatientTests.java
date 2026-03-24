@@ -17,8 +17,7 @@ import java.util.List;
 @Sql(scripts = "classpath:data.sql") // Path to a SQL Script that inserts data
 public class PatientTests {
 
-    @Autowired
-    PatientRepository patientRepository;
+    @Autowired PatientRepository patientRepository;
 
     @Test
     public void testTransactionalMethods() {
