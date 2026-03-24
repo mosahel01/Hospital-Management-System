@@ -12,26 +12,26 @@ import lombok.*;
 @NoArgsConstructor
 public class Doctor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+	@Column(nullable = false, length = 100)
+	private String name;
 
-    @Column(length = 100)
-    private String specialisation;
+	@Column(length = 100)
+	private String specialisation;
 
-    @Column(unique = true, nullable = false, length = 100)
-    private String email;
+	@Column(unique = true, nullable = false, length = 100)
+	private String email;
 
-    // idk why this is commented
-    // @CreationTimestamp
-    // @Column(updatable = false)
-    // private LocalDateTime createdAt;
+	// idk why this is commented
+	// @CreationTimestamp
+	// @Column(updatable = false)
+	// private LocalDateTime createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "appointment_id", nullable = false)
-    private Appointment appointment;
+	@ManyToOne
+	@JoinColumn(name = "appointment_id", nullable = false)
+	private Appointment appointment;
 
 }
